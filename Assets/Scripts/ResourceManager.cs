@@ -5,13 +5,15 @@ using UnityEngine;
 
 public class ResourceManager : MonoBehaviour
 {
+    public static ResourceManager Instance { get; private set; }
+    
     private Dictionary<SO_ResourceType, int> resourceAmountDictionary;
-
     private SO_ResourceTypeList resourceTypeList;
     // Start is called before the first frame update
 
     private void Awake()
     {
+        Instance = this;
         resourceAmountDictionary = new Dictionary<SO_ResourceType, int>();
         resourceTypeList =  Resources.Load<SO_ResourceTypeList>(nameof(SO_ResourceTypeList));
         foreach (var resourceType in resourceTypeList.list)
@@ -44,5 +46,6 @@ public class ResourceManager : MonoBehaviour
     public void AddResource(SO_ResourceType resourceType,int amount)
     {
         resourceAmountDictionary[resourceType] += amount;
+        TestLogRecourseAmountDictionary();
     }
 }
