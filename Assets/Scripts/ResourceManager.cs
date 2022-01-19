@@ -6,6 +6,7 @@ using UnityEngine;
 public class ResourceManager : MonoBehaviour
 {
     public static ResourceManager Instance { get; private set; }
+    public event EventHandler OnResourceAmountChanged;
     
     private Dictionary<SO_ResourceType, int> resourceAmountDictionary;
     private SO_ResourceTypeList resourceTypeList;
@@ -46,6 +47,12 @@ public class ResourceManager : MonoBehaviour
     public void AddResource(SO_ResourceType resourceType,int amount)
     {
         resourceAmountDictionary[resourceType] += amount;
+        OnResourceAmountChanged?.Invoke(this,EventArgs.Empty);
         TestLogRecourseAmountDictionary();
+    }
+
+    public int GetResourceAmount(SO_ResourceType resourceType)
+    {
+        return resourceAmountDictionary[resourceType];
     }
 }
