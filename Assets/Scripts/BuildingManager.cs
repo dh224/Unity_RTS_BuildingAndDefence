@@ -2,46 +2,50 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class BuildingManager : MonoBehaviour
 {
+    public event EventHandler<OnCurrentBuildingTypeChangedEventArgs> OnCurrentBuildingTypeChanged;
+    
+    public class OnCurrentBuildingTypeChangedEventArgs : EventArgs 
+    {
+        public SO_BuildingType currentBuildingType;
+    }
+    public static BuildingManager Instance { get; private set; }
     private SO_BuildingTypeList buildingTypeList;
-    private SO_BuildingType buildingType;
+    private SO_BuildingType currentBuildingType;
     private Camera mainCamera;
 
     private void Awake()
     {
         buildingTypeList = Resources.Load<SO_BuildingTypeList>(nameof(SO_BuildingTypeList));
-        buildingType = buildingTypeList.list[0]; 
+        currentBuildingType = null;
+        Instance = this;
     }
     void Start()
     {
         mainCamera = Camera.main;
-
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
         {
-            Instantiate(buildingType.prefab, GetMouseWorldPosition(), Quaternion.identity);
-        }
-
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            buildingType = buildingTypeList.list[0];
-        }
-
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            buildingType = buildingTypeList.list[1];
+            if (currentBuildingType != null)
+            {
+                Instantiate(currentBuildingType.prefab, UtilsClass.GetMouseWorldPosition(), Quaternion.identity);
+            }
         }
     }
-
-    private Vector3 GetMouseWorldPosition()
+    public void SetCurrentBuildingType(SO_BuildingType buildingType)
     {
-        Vector3 mouseWorldPosition = mainCamera.ScreenToWorldPoint((Input.mousePosition));
-        mouseWorldPosition.z = 0f;
-        return mouseWorldPosition;
+        this.currentBuildingType = buildingType;
+        OnCurrentBuildingTypeChanged?.Invoke(this,new OnCurrentBuildingTypeChangedEventArgs{currentBuildingType = currentBuildingType});
+    }
+
+    public SO_BuildingType GetCurrentBuildingType()
+    {
+        return currentBuildingType;
     }
 }

@@ -8,4 +8,5 @@ public class SO_BuildingType :ScriptableObject
     public string nameString;
     public Transform prefab;
     public RecourceGeneratorData recourceGeneratorData;
+    public Sprite buildingSprite;
 }
