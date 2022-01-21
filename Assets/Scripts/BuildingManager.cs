@@ -34,7 +34,12 @@ public class BuildingManager : MonoBehaviour
         {
             if (currentBuildingType != null && CanSpawnBuilding(currentBuildingType,UtilsClass.GetMouseWorldPosition()))
             {
-                Instantiate(currentBuildingType.prefab, UtilsClass.GetMouseWorldPosition(), Quaternion.identity);
+                if (ResourceManager.Instance.CanAfford(currentBuildingType.constructionResourceCostArray))
+                {
+                    ResourceManager.Instance.SpendResources(currentBuildingType.constructionResourceCostArray);
+                    Instantiate(currentBuildingType.prefab, UtilsClass.GetMouseWorldPosition(), Quaternion.identity);
+                }
+                
             }
         }
     }

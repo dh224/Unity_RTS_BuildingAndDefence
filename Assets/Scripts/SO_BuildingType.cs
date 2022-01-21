@@ -11,4 +11,5 @@ public class SO_BuildingType :ScriptableObject
     [FormerlySerializedAs("recourceGeneratorData")] public ResourceGeneratorData resourceGeneratorData;
     public Sprite buildingSprite;
     public float minConstructionRadius;
+    public ResourceAmount[] constructionResourceCostArray;
 }
