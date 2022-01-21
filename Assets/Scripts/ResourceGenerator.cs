@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RecourceGenerator : MonoBehaviour
+public class ResourceGenerator : MonoBehaviour
 {
     private ResourceGeneratorData resourceGeneratorData;
     private float timer;
@@ -15,9 +15,9 @@ public class RecourceGenerator : MonoBehaviour
         timerMax = resourceGeneratorData.timerMax;
     }
 
-    private void Start()
+    public static int GetNearResourceAmount(ResourceGeneratorData resourceGeneratorData,Vector3 position)
     {
-        Collider2D[] collider2DArray = Physics2D.OverlapCircleAll(transform.position, resourceGeneratorData.resourceDetectionRadius);
+        Collider2D[] collider2DArray = Physics2D.OverlapCircleAll(position, resourceGeneratorData.resourceDetectionRadius);
         int nearByResouceNodeAmount = 0;
         foreach (var collider in collider2DArray)
         {
@@ -31,9 +31,13 @@ public class RecourceGenerator : MonoBehaviour
                 
             }
         }
-
         nearByResouceNodeAmount = Mathf.Clamp(nearByResouceNodeAmount, 0, resourceGeneratorData.maxResourceAmount);
+        return nearByResouceNodeAmount;
+    }
+    private void Start()
+    {
 
+        int nearByResouceNodeAmount = GetNearResourceAmount(resourceGeneratorData, transform.position);
         if (nearByResouceNodeAmount == 0)
         {
             //no resourcenode nearby!
@@ -57,5 +61,20 @@ public class RecourceGenerator : MonoBehaviour
             timer  += timerMax;
             ResourceManager.Instance.AddResource(resourceGeneratorData.resourceType,1);
         }
+    }
+
+    public ResourceGeneratorData GetResourceGeneratorData()
+    {
+        return this.resourceGeneratorData;
+    }
+
+    public float GetTimerNormalized()
+    {
+        return (float)timer / (float)timerMax;
+    }
+
+    public float GetAmountGeneratorPerSecond()
+    {
+        return 1 / timerMax;
     }
 }
