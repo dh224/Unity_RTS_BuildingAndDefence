@@ -10,4 +10,5 @@ public class SO_BuildingType :ScriptableObject
     public Transform prefab;
     [FormerlySerializedAs("recourceGeneratorData")] public ResourceGeneratorData resourceGeneratorData;
     public Sprite buildingSprite;
+    public float minConstructionRadius;
 }

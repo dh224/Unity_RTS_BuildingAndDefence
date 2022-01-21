@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class BuildingTypeSelectUI : MonoBehaviour
 {
     [SerializeField] private Sprite arrowSprite;
+    [SerializeField] private List<SO_BuildingType> ignoreBuildingTypeList;
     private Dictionary<SO_BuildingType, Transform> btnTransformDictionary;
     private Transform arrowBtn;
     private void Awake()
@@ -30,17 +31,21 @@ public class BuildingTypeSelectUI : MonoBehaviour
        
        foreach (var buildingType in buildingTypeList.list)
        {
-           Transform btnTransform = Instantiate(btnTemplate, transform);
-           btnTransform.gameObject.SetActive(true);
-           offset = 120f;
-           btnTransform.GetComponent<RectTransform>().anchoredPosition = new Vector2(offset * ++index, 80f);
-           btnTransform.Find("BuildingImage").GetComponent<Image>().sprite = buildingType.buildingSprite;
-           btnTransformDictionary[buildingType] = btnTransform;
-           
-           btnTransform.GetComponent<Button>().onClick.AddListener(() =>
+           if (!ignoreBuildingTypeList.Contains(buildingType))
            {
-               BuildingManager.Instance.SetCurrentBuildingType(buildingType);
-           });
+               Transform btnTransform = Instantiate(btnTemplate, transform);
+               btnTransform.gameObject.SetActive(true);
+               offset = 120f;
+               btnTransform.GetComponent<RectTransform>().anchoredPosition = new Vector2(offset * ++index, 80f);
+               btnTransform.Find("BuildingImage").GetComponent<Image>().sprite = buildingType.buildingSprite;
+               btnTransformDictionary[buildingType] = btnTransform;
+           
+               btnTransform.GetComponent<Button>().onClick.AddListener(() =>
+               {
+                   BuildingManager.Instance.SetCurrentBuildingType(buildingType);
+               });  
+           }
+
        }
     }
 
