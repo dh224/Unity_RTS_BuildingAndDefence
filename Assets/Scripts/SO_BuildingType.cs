@@ -12,4 +12,15 @@ public class SO_BuildingType :ScriptableObject
     public Sprite buildingSprite;
     public float minConstructionRadius;
     public ResourceAmount[] constructionResourceCostArray;
+
+    public string GetConstructionResourceCostString()
+    {
+        string str = "";
+        foreach (var resourceAmount in constructionResourceCostArray)
+        {
+            str +=  "<color #" + resourceAmount.resourceType.colorHex  + ">" +  resourceAmount.resourceType.shortName + "</color>" +":" + resourceAmount.amount + "\n";
+        }
+
+        return str;
+    }
 }

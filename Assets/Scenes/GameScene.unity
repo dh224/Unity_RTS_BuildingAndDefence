@@ -19582,6 +19582,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1474079487}
   - component: {fileID: 1474079488}
+  - component: {fileID: 1474079489}
   m_Layer: 5
   m_Name: BtnTemplate
   m_TagString: Untagged
@@ -19655,6 +19656,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1474079489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1474079486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 276c22636af5b53478469ab2691f0271, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1479774340 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6571645175568784806, guid: bcf03607a8fb150428ddb251b7483222, type: 3}
@@ -23307,7 +23320,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

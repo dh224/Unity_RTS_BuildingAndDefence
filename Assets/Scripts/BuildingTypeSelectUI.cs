@@ -27,7 +27,16 @@ public class BuildingTypeSelectUI : MonoBehaviour
        {
            BuildingManager.Instance.SetCurrentBuildingType(null);
        }); 
-       
+       MouseEnterExitEvents mouseEnterExitEvents = arrowBtn.GetComponent<MouseEnterExitEvents>();
+       mouseEnterExitEvents.OnMouseEnter += (object sender, EventArgs e) =>
+       {
+           TooltipUI.Instance.Show("箭头");
+       };
+       mouseEnterExitEvents.OnMouseExit += (object sender, EventArgs e) =>
+       {
+           TooltipUI.Instance.Hide();
+       };
+
        
        foreach (var buildingType in buildingTypeList.list)
        {
@@ -39,11 +48,30 @@ public class BuildingTypeSelectUI : MonoBehaviour
                btnTransform.GetComponent<RectTransform>().anchoredPosition = new Vector2(offset * ++index, 80f);
                btnTransform.Find("BuildingImage").GetComponent<Image>().sprite = buildingType.buildingSprite;
                btnTransformDictionary[buildingType] = btnTransform;
-           
+
                btnTransform.GetComponent<Button>().onClick.AddListener(() =>
                {
                    BuildingManager.Instance.SetCurrentBuildingType(buildingType);
                });  
+               
+               mouseEnterExitEvents = btnTransform.GetComponent<MouseEnterExitEvents>();
+               mouseEnterExitEvents.OnMouseEnter += (object sender, EventArgs e) =>
+               {
+                   string coststr = buildingType.GetConstructionResourceCostString();
+                   if (coststr == "")
+                   {
+                       TooltipUI.Instance.Show("NO COST"); 
+                   }
+                   else
+                   {
+                       TooltipUI.Instance.Show("COST:\n"+coststr);  
+                   }
+                   
+               };
+               mouseEnterExitEvents.OnMouseExit += (object sender, EventArgs e) =>
+               {
+                   TooltipUI.Instance.Hide();
+               };
            }
 
        }
