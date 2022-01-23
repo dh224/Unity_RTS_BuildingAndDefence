@@ -165,6 +165,8 @@ GameObject:
   - component: {fileID: -756143317092650328}
   - component: {fileID: 8143511180239825491}
   - component: {fileID: 801898139316895226}
+  - component: {fileID: -7389350896802384074}
+  - component: {fileID: 7822540227112082591}
   m_Layer: 0
   m_Name: PF_StoneHarvester
   m_TagString: Untagged
@@ -186,6 +188,7 @@ Transform:
   - {fileID: 9111545090614552988}
   - {fileID: 2193629863422201287}
   - {fileID: 6721525097107882550}
+  - {fileID: 6320677154287375112}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -240,6 +243,97 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.9722185, y: 4.0875874}
   m_EdgeRadius: 0
+--- !u!114 &-7389350896802384074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9111545090938962465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f215b95416d4f1d4f8dd1fe061dec69d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7822540227112082591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9111545090938962465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5b883a9e2c35ae4092d8bb59c82da84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthAmountMax: 100
+--- !u!1001 &258746283175472782
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 9111545090938962466}
+    m_Modifications:
+    - target: {fileID: 6062071862221454726, guid: 1073641d1004012418c21c004357db14, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6062071862221454726, guid: 1073641d1004012418c21c004357db14, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6062071862221454726, guid: 1073641d1004012418c21c004357db14, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 6062071862221454726, guid: 1073641d1004012418c21c004357db14, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6062071862221454726, guid: 1073641d1004012418c21c004357db14, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6062071862221454726, guid: 1073641d1004012418c21c004357db14, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6062071862221454726, guid: 1073641d1004012418c21c004357db14, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6062071862221454726, guid: 1073641d1004012418c21c004357db14, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6062071862221454726, guid: 1073641d1004012418c21c004357db14, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6062071862221454726, guid: 1073641d1004012418c21c004357db14, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6062071862221454726, guid: 1073641d1004012418c21c004357db14, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6062071862221454727, guid: 1073641d1004012418c21c004357db14, type: 3}
+      propertyPath: healthSystem
+      value: 
+      objectReference: {fileID: 7822540227112082591}
+    - target: {fileID: 6062071862221454841, guid: 1073641d1004012418c21c004357db14, type: 3}
+      propertyPath: m_Name
+      value: PF_HealthBar
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1073641d1004012418c21c004357db14, type: 3}
+--- !u!4 &6320677154287375112 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6062071862221454726, guid: 1073641d1004012418c21c004357db14, type: 3}
+  m_PrefabInstance: {fileID: 258746283175472782}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1873176921216078025
 PrefabInstance:
   m_ObjectHideFlags: 0
