@@ -19083,6 +19083,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0993051dc3a91ec4ea72ab5c1aafc226, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingResourceAmountList:
+  - resourceType: {fileID: 11400000, guid: 759578ebf6697eb47a223dc1d4ccdcb6, type: 2}
+    amount: 100
+  - resourceType: {fileID: 11400000, guid: 2b01d1c3b957bfb458dff508b9d664d1, type: 2}
+    amount: 200
+  - resourceType: {fileID: 11400000, guid: 0cf1f055f12a2234cb856764a0db6284, type: 2}
+    amount: 300
 --- !u!4 &1430331798
 Transform:
   m_ObjectHideFlags: 0
@@ -23989,7 +23996,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3486941385008164165, guid: 06058ac39082a214c924f1fbc1fa3c61, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3486941385008164165, guid: 06058ac39082a214c924f1fbc1fa3c61, type: 3}
       propertyPath: m_LocalPosition.x

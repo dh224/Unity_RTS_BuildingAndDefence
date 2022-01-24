@@ -7,7 +7,7 @@ public class ResourceManager : MonoBehaviour
 {
     public static ResourceManager Instance { get; private set; }
     public event EventHandler OnResourceAmountChanged;
-    
+    [SerializeField] private List<ResourceAmount> startingResourceAmountList;
     private Dictionary<SO_ResourceType, int> resourceAmountDictionary;
     private SO_ResourceTypeList resourceTypeList;
     // Start is called before the first frame update
@@ -21,6 +21,10 @@ public class ResourceManager : MonoBehaviour
         {
             resourceAmountDictionary[resourceType] = 0;
         }
+        foreach (var  resourceAmount in startingResourceAmountList)
+        {
+            AddResource(resourceAmount.resourceType,resourceAmount.amount);
+        }
     }
     void Start()
     {
@@ -32,7 +36,6 @@ public class ResourceManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             AddResource(resourceTypeList.list[0],2);
-            TestLogRecourseAmountDictionary();
         }
     }
 
@@ -48,7 +51,6 @@ public class ResourceManager : MonoBehaviour
     {
         resourceAmountDictionary[resourceType] += amount;
         OnResourceAmountChanged?.Invoke(this,EventArgs.Empty);
-        TestLogRecourseAmountDictionary();
     }
 
     public int GetResourceAmount(SO_ResourceType resourceType)
@@ -62,7 +64,6 @@ public class ResourceManager : MonoBehaviour
         {
             if (resourceAmountDictionary[resourceAmount.resourceType] < resourceAmount.amount) return false;
         }
-
         return true;
     }
 
@@ -71,6 +72,7 @@ public class ResourceManager : MonoBehaviour
         foreach (var resourceAmount in resourceAmounts)
         {
             resourceAmountDictionary[resourceAmount.resourceType] -= resourceAmount.amount;
+            OnResourceAmountChanged?.Invoke(this,EventArgs.Empty);
         }
     }
 }

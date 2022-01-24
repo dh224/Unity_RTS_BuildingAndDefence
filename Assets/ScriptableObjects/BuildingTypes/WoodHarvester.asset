@@ -23,3 +23,4 @@ MonoBehaviour:
   minConstructionRadius: 15
   constructionResourceCostArray: []
   healthAmountMax: 100
+  hasResourceGenertorData: 1

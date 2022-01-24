@@ -26,7 +26,10 @@ public class ResourceNearbyOverlay : MonoBehaviour
     {
         this.resourceGeneratorData = resourceGeneratorData;
         gameObject.SetActive(true);
-        transform.Find("Icon").GetComponent<SpriteRenderer>().sprite = resourceGeneratorData.resourceType.sprite;
+        if (resourceGeneratorData.resourceType != null)
+        {
+            transform.Find("Icon").GetComponent<SpriteRenderer>().sprite = resourceGeneratorData.resourceType.sprite;
+        }
     }
 
     public void Hide()

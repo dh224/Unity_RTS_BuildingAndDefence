@@ -13,6 +13,7 @@ public class SO_BuildingType :ScriptableObject
     public float minConstructionRadius;
     public ResourceAmount[] constructionResourceCostArray;
     public int healthAmountMax;
+    public bool hasResourceGenertorData;
 
     public string GetConstructionResourceCostString()
     {
