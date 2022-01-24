@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 public class BuildingManager : MonoBehaviour
 {
     public event EventHandler<OnCurrentBuildingTypeChangedEventArgs> OnCurrentBuildingTypeChanged;
+    [SerializeField] private Building hqBuilding;
     
     public class OnCurrentBuildingTypeChangedEventArgs : EventArgs 
     {
@@ -51,9 +52,14 @@ public class BuildingManager : MonoBehaviour
                 {
                     TooltipUI.Instance.Show(errormessage,new TooltipUI.TooltipTimer{timer = 2f});
                 }
-
-                
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            Vector3 enemySpawnPosition = UtilsClass.GetMouseWorldPosition() + UtilsClass.GetRandomDir()* 5f;
+            
+            Enemy.Create(enemySpawnPosition);
         }
     }
 
@@ -109,5 +115,10 @@ public class BuildingManager : MonoBehaviour
     public SO_BuildingType GetCurrentBuildingType()
     {
         return currentBuildingType;
+    }
+
+    public Building GetHQBuilding()
+    {
+        return hqBuilding;
     }
 }
