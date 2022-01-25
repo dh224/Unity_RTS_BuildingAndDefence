@@ -14,6 +14,7 @@ public class SO_BuildingType :ScriptableObject
     public ResourceAmount[] constructionResourceCostArray;
     public int healthAmountMax;
     public bool hasResourceGenertorData;
+    public float constructionTimerMax;
 
     public string GetConstructionResourceCostString()
     {

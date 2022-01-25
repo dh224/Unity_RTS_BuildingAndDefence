@@ -28,3 +28,4 @@ MonoBehaviour:
     amount: 100
   healthAmountMax: 150
   hasResourceGenertorData: 0
+  constructionTimerMax: 10
