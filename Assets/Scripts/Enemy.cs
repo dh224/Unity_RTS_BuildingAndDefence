@@ -28,7 +28,11 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        targetTransform  =  BuildingManager.Instance.GetHQBuilding().transform;
+        Building hqBuilding = BuildingManager.Instance.GetHQBuilding();
+        if (hqBuilding != null)
+        {
+            targetTransform  = hqBuilding.transform;
+        }
         rigidbody2D = GetComponent<Rigidbody2D>();
         lookforTargetTimer = Random.Range(0f, lookforTargetTimerMax);
         healthSystem = GetComponent<HealthSystem>();
@@ -105,7 +109,11 @@ public class Enemy : MonoBehaviour
         }
         if (targetTransform == null)
         {
-            targetTransform = BuildingManager.Instance.GetHQBuilding().transform;
+            Building hqBuilding = BuildingManager.Instance.GetHQBuilding();
+            if (hqBuilding != null)
+            {
+                targetTransform = hqBuilding.transform;
+            }
         }
     }
 }

@@ -27,8 +27,14 @@ public class BuildingManager : MonoBehaviour
     void Start()
     {
         mainCamera = Camera.main;
+        hqBuilding.GetComponent<HealthSystem>().OnDied += BuildingManager_HQOnDied;
     }
 
+    private void BuildingManager_HQOnDied(object sneder, EventArgs e)
+    {
+        Destroy(hqBuilding); 
+        GameOverUI.Instance.Show();
+    }
     void Update()
     {
         if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())

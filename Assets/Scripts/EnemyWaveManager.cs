@@ -6,6 +6,8 @@ using Random = UnityEngine.Random;
 
 public class EnemyWaveManager : MonoBehaviour
 {
+    public static EnemyWaveManager Instance { get; private set; }
+
     // Start is called before the first frame update
     public event EventHandler OnWaveNumberChanged;
     
@@ -26,6 +28,7 @@ public class EnemyWaveManager : MonoBehaviour
     private Vector3 spawnPosition;
     void Start()
     {
+        Instance = this;
         state = State.WaitingToSpawnNextWave;
         spawnPosition = spawnPositionTransform[Random.Range(0,spawnPositionTransform.Count -1)].position;
         nextWaveSpawnPositionTransform.position = spawnPosition;
@@ -70,7 +73,7 @@ public class EnemyWaveManager : MonoBehaviour
 
     private void SpawnWave()
     {
-        remainingEnemySpawnAmount = 6+ waveNumber * 4 ;
+        remainingEnemySpawnAmount = 100+ waveNumber * 4 ;
         state = State.SpawningWave;
         waveNumber++;
         OnWaveNumberChanged?.Invoke(this,EventArgs.Empty);
