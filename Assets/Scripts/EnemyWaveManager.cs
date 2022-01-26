@@ -73,7 +73,7 @@ public class EnemyWaveManager : MonoBehaviour
 
     private void SpawnWave()
     {
-        remainingEnemySpawnAmount = 100+ waveNumber * 4 ;
+        remainingEnemySpawnAmount = 8+ waveNumber * 5 ;
         state = State.SpawningWave;
         waveNumber++;
         OnWaveNumberChanged?.Invoke(this,EventArgs.Empty);
