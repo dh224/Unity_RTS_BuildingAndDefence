@@ -37,6 +37,7 @@ public class Building : MonoBehaviour
     
     private void HealthSystem_OnDamage(object sender,EventArgs e){
         ShowBuildingRepairBtn();
+        SoundsManager.Instance.PlaySound(SoundsManager.Sound.BuildingDamaged);
     }
 
     private void HealthSystem_OnHealed(object sender, EventArgs e)
@@ -49,6 +50,7 @@ public class Building : MonoBehaviour
 
     private void HealthSystem_OnDied(object sender,EventArgs e)
     {
+        SoundsManager.Instance.PlaySound(SoundsManager.Sound.BuildingDestroyed);
         Destroy(gameObject);
     }
         // Update is called once per frame

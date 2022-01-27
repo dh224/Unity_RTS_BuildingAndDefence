@@ -30,8 +30,9 @@ public class BuildingManager : MonoBehaviour
         hqBuilding.GetComponent<HealthSystem>().OnDied += BuildingManager_HQOnDied;
     }
 
-    private void BuildingManager_HQOnDied(object sneder, EventArgs e)
+    private void BuildingManager_HQOnDied(object sender, EventArgs e)
     {
+        SoundsManager.Instance.PlaySound(SoundsManager.Sound.GameOver);
         Destroy(hqBuilding); 
         GameOverUI.Instance.Show();
     }
@@ -49,6 +50,7 @@ public class BuildingManager : MonoBehaviour
                         ResourceManager.Instance.SpendResources(currentBuildingType.constructionResourceCostArray);
                         //Instantiate(currentBuildingType/**/.prefab, UtilsClass.GetMouseWorldPosition(), Quaternion.identity);
                         BuildingConstruction.Create(UtilsClass.GetMouseWorldPosition(),currentBuildingType);
+                        SoundsManager.Instance.PlaySound(SoundsManager.Sound.BuildingPlaced);
                     }
                     else
                     {
