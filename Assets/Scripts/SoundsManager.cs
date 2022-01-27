@@ -5,6 +5,7 @@ using UnityEngine;
 public class SoundsManager : MonoBehaviour
 {
     public static SoundsManager Instance { get; private set; }
+    private float volume = 0.5f;
     public enum Sound
     {
         BuildingPlaced,
@@ -28,6 +29,29 @@ public class SoundsManager : MonoBehaviour
     }
     public void PlaySound(Sound sound)
     {
-        audioSource.PlayOneShot(soundsDictionary[sound]);
+        audioSource.PlayOneShot(soundsDictionary[sound],volume);
+    }
+
+    public void IncreaseVolume()
+    {
+        volume += 0.1f;
+        if (volume >= 1f)
+        {
+            volume = 1;
+        }
+    }
+
+    public void DecreaseVolume()
+    {
+        volume -= 0.1f;
+        if (volume <= 0f)
+        {
+            volume = 0f;
+        }
+    }
+
+    public float GetVolume()
+    {
+        return volume;
     }
 }
